@@ -1,0 +1,25 @@
+################################################
+# Syntax Coloring Map For NXT Shield Library
+################################################
+
+################################################
+# Datatypes (KEYWORD1)
+################################################
+
+Kalman			KEYWORD1
+
+################################################
+# Methods and Functions (KEYWORD2)
+################################################
+
+getAngle		KEYWORD2
+setAngle		KEYWORD2
+getRate			KEYWORD2
+
+setQangle 		KEYWORD2
+setQgyroBias	KEYWORD2
+setRangle		KEYWORD2
+
+################################################
+# Constants and enums (LITERAL1)
+################################################
