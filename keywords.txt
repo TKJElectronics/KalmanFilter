@@ -17,8 +17,8 @@ setAngle		KEYWORD2
 getRate			KEYWORD2
 
 setQangle 		KEYWORD2
-setQgyroBias	KEYWORD2
-setRangle		KEYWORD2
+setQbias	KEYWORD2
+setRmeasure		KEYWORD2
 
 ################################################
 # Constants and enums (LITERAL1)

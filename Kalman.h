@@ -23,13 +23,13 @@ public:
     Kalman() {
         /* We will set the varibles like so, these can also be tuned by the user */
         Q_angle = 0.001;
-        Q_gyroBias = 0.003;
-        R_angle = 0.03;
+        Q_bias = 0.003;
+        R_measure = 0.03;
         bias = 0; // Reset bias
-        P[0][0] = 1; // Since we don't know the initial angle and bias we set it like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
+        P[0][0] = 0; // Since we assume tha the bias is 0 and we know the starting angle (use setAngle), the error covariance matrix is set like so - see: http://en.wikipedia.org/wiki/Kalman_filter#Example_application.2C_technical
         P[0][1] = 0;
         P[1][0] = 0;
-        P[1][1] = 1;
+        P[1][1] = 0;
     };
     // The angle should be in degrees and the rate should be in degrees per second and the delta time in seconds
     double getAngle(double newAngle, double newRate, double dt) {
@@ -46,11 +46,11 @@ public:
         P[0][0] += dt * (dt*P[1][1] - P[0][1] - P[1][0] + Q_angle);
         P[0][1] -= dt * P[1][1];
         P[1][0] -= dt * P[1][1];
-        P[1][1] += Q_gyroBias * dt;
+        P[1][1] += Q_bias * dt;
         
         // Discrete Kalman filter measurement update equations - Measurement Update ("Correct")
         // Calculate Kalman gain - Compute the Kalman gain
-        S = P[0][0] + R_angle;
+        S = P[0][0] + R_measure;
         K[0] = P[0][0] / S;
         K[1] = P[1][0] / S;
         
@@ -67,19 +67,19 @@ public:
         
         return angle;
     };
-    void setAngle(double newAngle) { angle = newAngle; } // Used to set angle, this should be set as the starting angle
+    void setAngle(double newAngle) { angle = newAngle; }; // Used to set angle, this should be set as the starting angle
     double getRate() { return rate; }; // Return the unbiased rate
     
     /* These are used to tune the Kalman filter */
     void setQangle(double newQ_angle) { Q_angle = newQ_angle; };
-    void setQgyroBias(double newQ_gyroBias) { Q_gyroBias = newQ_gyroBias; };
-    void setRangle(double newR_angle) { R_angle = newR_angle; };
+    void setQbias(double newQ_bias) { Q_bias = newQ_bias; };
+    void setRmeasure(double newR_measure) { R_measure = newR_measure; };
     
 private:
     /* Kalman filter variables */
     double Q_angle; // Process noise covariance for the accelerometer - (w = process noise)
-    double Q_gyroBias; // Process noise covariance for the gyro bias - (w = process noise)
-    double R_angle; // Measurement noise covariance - this is actually the variance of the measurement noise - (v = measurement noise)
+    double Q_bias; // Process noise covariance for the gyro bias - (w = process noise)
+    double R_measure; // Measurement noise covariance - this is actually the variance of the measurement noise - (v = measurement noise)
     
     double angle; // The angle calculated by the Kalman filter - part of the 2x1 state matrix
     double bias; // The gyro bias calculated by the Kalman filter - part of the 2x1 state matrix
@@ -87,7 +87,7 @@ private:
     
     double P[2][2]; // Error covariance matrix - This is a 2x2 matrix
     double K[2]; // Kalman gain - This is a 2x1 matrix
-    double y; // Angle error - 1x1 matrix
+    double y; // Angle difference - 1x1 matrix
     double S; // Estimate error - 1x1 matrix
 };
 
