@@ -34,7 +34,6 @@ void setup() {
   zeroValue[1] /= 100;
   zeroValue[2] /= 100;
 
-  
   timer = micros();
   kX.setAngle(270); // The angle calculated by accelerometer starts at 270 degrees
 }
