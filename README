@@ -6,4 +6,4 @@ This is a Kalman filter library for any microcontroller that supports float math
 
 It can also be used with Arduino, simply copy the folder to your library folder.
 
-For more information see my blog post: http://blog.tkjelectronics.dk/2012/08/a-practical-approach-to-kalman-filter-and-how-to-implement-it or send me an email at kristianl at tkjelectronics dot dk.
+For more information see my blog post: http://blog.tkjelectronics.dk/2012/09/a-practical-approach-to-kalman-filter-and-how-to-implement-it or send me an email at kristianl at tkjelectronics dot dk.
