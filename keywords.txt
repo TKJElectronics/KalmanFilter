@@ -6,19 +6,19 @@
 # Datatypes (KEYWORD1)
 ################################################
 
-Kalman			KEYWORD1
+Kalman	KEYWORD1
 
 ################################################
 # Methods and Functions (KEYWORD2)
 ################################################
 
-getAngle		KEYWORD2
-setAngle		KEYWORD2
-getRate			KEYWORD2
+getAngle	KEYWORD2
+setAngle	KEYWORD2
+getRate	KEYWORD2
 
-setQangle 		KEYWORD2
+setQangle	KEYWORD2
 setQbias	KEYWORD2
-setRmeasure		KEYWORD2
+setRmeasure	KEYWORD2
 
 ################################################
 # Constants and enums (LITERAL1)
