@@ -20,6 +20,10 @@ setQangle	KEYWORD2
 setQbias	KEYWORD2
 setRmeasure	KEYWORD2
 
+getQangle	KEYWORD2
+getQbias	KEYWORD2
+getRmeasure	KEYWORD2
+
 ################################################
 # Constants and enums (LITERAL1)
 ################################################

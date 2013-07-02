@@ -83,6 +83,10 @@ public:
     void setQbias(double newQ_bias) { Q_bias = newQ_bias; };
     void setRmeasure(double newR_measure) { R_measure = newR_measure; };
     
+    double getQangle() { return Q_angle; };
+    double getQbias() { return Q_bias; };
+    double getRmeasure() { return R_measure; };
+    
 private:
     /* Kalman filter variables */
     double Q_angle; // Process noise variance for the accelerometer
