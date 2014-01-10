@@ -38,6 +38,7 @@ uint8_t i2cData[14]; // Buffer for I2C data
 void setup() {
   Serial.begin(115200);
   Wire.begin();
+  TWBR = ((F_CPU / 400000L) - 16) / 2; // Set I2C frequency to 400kHz
 
   i2cData[0] = 7; // Set the sample rate to 1000Hz - 8kHz/(7+1) = 1000Hz
   i2cData[1] = 0x00; // Disable FSYNC and set 260 Hz Acc filtering, 256 Hz Gyro filtering, 8 KHz sampling
