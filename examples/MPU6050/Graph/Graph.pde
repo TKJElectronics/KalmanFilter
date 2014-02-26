@@ -26,7 +26,7 @@ boolean drawValues;
 void setup() {  
   size(width, height);
   println(Serial.list()); // Use this to print connected serial devices
-  serial = new Serial(this, Serial.list()[8], 115200);
+  serial = new Serial(this, Serial.list()[0], 115200);
   serial.bufferUntil('\n'); // Buffer until line feed
 
   for (int i=0;i<width;i++) { // center all variables
