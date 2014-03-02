@@ -7,8 +7,6 @@ This is the [Processing](http://processing.org/) application I made to visualize
 
 This should be used with the [MPU-6050](../) code I have provided.
 
-Precompiled version for Linux, Mac OS X and Windows can be found in the folders found in this directory.
-
 Note that you properly need to change the serial port for it to work.
 
 The serial port can be changed at the following line in the code:
