@@ -35,6 +35,8 @@ double kalAngleX, kalAngleY; // Calculated angle using a Kalman filter
 uint32_t timer;
 uint8_t i2cData[14]; // Buffer for I2C data
 
+// TODO: Make calibration routine
+
 void setup() {
   Serial.begin(115200);
   Wire.begin();
@@ -85,9 +87,9 @@ void setup() {
 void loop() {
   /* Update all the values */
   while (i2cRead(0x3B, i2cData, 14));
-  accX = ((i2cData[0] << 8) | i2cData[1]) + 2000.0;
-  accY = ((i2cData[2] << 8) | i2cData[3]) + 3319.84;
-  accZ = ((i2cData[4] << 8) | i2cData[5]) + 664.48;
+  accX = ((i2cData[0] << 8) | i2cData[1]);
+  accY = ((i2cData[2] << 8) | i2cData[3]);
+  accZ = ((i2cData[4] << 8) | i2cData[5]);
   tempRaw = (i2cData[6] << 8) | i2cData[7];
   gyroX = (i2cData[8] << 8) | i2cData[9];
   gyroY = (i2cData[10] << 8) | i2cData[11];
