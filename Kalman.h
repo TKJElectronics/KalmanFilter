@@ -30,6 +30,12 @@ public:
 
     /* These are used to tune the Kalman filter */
     void setQangle(float Q_angle);
+    /**
+     * setQbias(float Q_bias)
+     * Default value (0.003f) is in Kalman.cpp. 
+     * Raise this to follow input more closely,
+     * lower this to smooth result of kalman filter.
+     */
     void setQbias(float Q_bias);
     void setRmeasure(float R_measure);
 
