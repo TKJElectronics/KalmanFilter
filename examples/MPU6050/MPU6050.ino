@@ -24,8 +24,8 @@ Kalman kalmanX; // Create the Kalman instances
 Kalman kalmanY;
 
 /* IMU Data */
-double accX, accY, accZ;
-double gyroX, gyroY, gyroZ;
+int16_t accX, accY, accZ;
+int16_t gyroX, gyroY, gyroZ;
 int16_t tempRaw;
 
 double gyroXangle, gyroYangle; // Angle calculate using the gyro only
