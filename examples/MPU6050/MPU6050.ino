@@ -63,9 +63,9 @@ void setup() {
 
   /* Set kalman and gyro starting angle */
   while (i2cRead(0x3B, i2cData, 6));
-  accX = (i2cData[0] << 8) | i2cData[1];
-  accY = (i2cData[2] << 8) | i2cData[3];
-  accZ = (i2cData[4] << 8) | i2cData[5];
+  accX = (int16_t)((i2cData[0] << 8) | i2cData[1]);
+  accY = (int16_t)((i2cData[2] << 8) | i2cData[3]);
+  accZ = (int16_t)((i2cData[4] << 8) | i2cData[5]);
 
   // Source: http://www.freescale.com/files/sensors/doc/app_note/AN3461.pdf eq. 25 and eq. 26
   // atan2 outputs the value of -π to π (radians) - see http://en.wikipedia.org/wiki/Atan2
@@ -91,13 +91,13 @@ void setup() {
 void loop() {
   /* Update all the values */
   while (i2cRead(0x3B, i2cData, 14));
-  accX = ((i2cData[0] << 8) | i2cData[1]);
-  accY = ((i2cData[2] << 8) | i2cData[3]);
-  accZ = ((i2cData[4] << 8) | i2cData[5]);
-  tempRaw = (i2cData[6] << 8) | i2cData[7];
-  gyroX = (i2cData[8] << 8) | i2cData[9];
-  gyroY = (i2cData[10] << 8) | i2cData[11];
-  gyroZ = (i2cData[12] << 8) | i2cData[13];
+  accX = (int16_t)((i2cData[0] << 8) | i2cData[1]);
+  accY = (int16_t)((i2cData[2] << 8) | i2cData[3]);
+  accZ = (int16_t)((i2cData[4] << 8) | i2cData[5]);
+  tempRaw = (int16_t)((i2cData[6] << 8) | i2cData[7]);
+  gyroX = (int16_t)((i2cData[8] << 8) | i2cData[9]);
+  gyroY = (int16_t)((i2cData[10] << 8) | i2cData[11]);
+  gyroZ = (int16_t)((i2cData[12] << 8) | i2cData[13]);;
 
   double dt = (double)(micros() - timer) / 1000000; // Calculate delta time
   timer = micros();
