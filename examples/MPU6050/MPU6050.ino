@@ -35,7 +35,150 @@ double kalAngleX, kalAngleY; // Calculated angle using a Kalman filter
 uint32_t timer;
 uint8_t i2cData[14]; // Buffer for I2C data
 
-// TODO: Make calibration routine
+/* Calibration routine */
+/* Raw data from the IMU6050 */
+int ax, ay, az;
+int gx, gy, gz;
+
+int ax_o, ay_o, az_o; // Accelerometer offset values
+int gx_o, gy_o, gz_o; // Gyroscope offset values
+
+/* MPU6050 Offset register address */
+const uint8_t MPU6050_RA_XA_OFFS_H = 0x06; // XA_OFFS
+const uint8_t MPU6050_RA_YA_OFFS_H = 0x08; // YA_OFFS
+const uint8_t MPU6050_RA_ZA_OFFS_H = 0x0A; // ZA_OFFS
+const uint8_t MPU6050_RA_XG_OFFS_USRH = 0x13; // XG_OFFS_USR
+const uint8_t MPU6050_RA_YG_OFFS_USRH = 0x15; // YG_OFFS_USR
+const uint8_t MPU6050_RA_ZG_OFFS_USRH = 0x17; // ZG_OFFS_USR
+const uint8_t MPU6050_RA_ACCEL_XOUT_H = 0x3B; // XA_OUTPUT
+const uint8_t MPU6050_RA_GYRO_XOUT_H = 0x43;  // XG_OUTPUT
+
+/* Low pass filter variables */
+long f_ax,f_ay, f_az;
+int p_ax, p_ay, p_az;
+long f_gx,f_gy, f_gz;
+int p_gx, p_gy, p_gz;
+int counter = 0;
+
+void getAcceleration(int16_t* x, int16_t* y, int16_t* z) {
+    i2cRead(MPU6050_RA_ACCEL_XOUT_H, i2cData, 6);
+    *x = (int16_t)((i2cData[0] << 8) | i2cData[1]);
+    *y = (int16_t)((i2cData[2] << 8) | i2cData[3]);
+    *z = (int16_t)((i2cData[4] << 8) | i2cData[5]);
+}
+
+void getRotation(int16_t* x, int16_t* y, int16_t* z) {
+    i2cRead(MPU6050_RA_GYRO_XOUT_H, i2cData, 6);
+    *x = (int16_t)((i2cData[0] << 8) | i2cData[1]);
+    *y = (int16_t)((i2cData[2] << 8) | i2cData[3]);
+    *z = (int16_t)((i2cData[4] << 8) | i2cData[5]);
+}
+
+/**
+    MPU6050 Calibration Setting.
+    Initialize the sensor and check the connection.
+    Also print the initial offset values and await for user interaction to
+    start the calibration routine.
+*/
+void gyroCalibrationSetting()
+{
+  Wire.begin(); // Initialize I2C
+
+  // Offset reading
+  while (i2cRead(MPU6050_RA_XA_OFFS_H, i2cData, 6));
+  ax_o = (int16_t)((i2cData[0] << 8) | i2cData[1]);
+  ay_o = (int16_t)((i2cData[2] << 8) | i2cData[3]);
+  az_o = (int16_t)((i2cData[4] << 8) | i2cData[5]);
+
+  while (i2cRead(MPU6050_RA_XG_OFFS_USRH, i2cData, 6));
+  gx_o = (int16_t)((i2cData[0] << 8) | i2cData[1]);
+  gy_o = (int16_t)((i2cData[2] << 8) | i2cData[3]);
+  gz_o = (int16_t)((i2cData[4] << 8) | i2cData[5]);
+
+  // Print the offset reading values
+  Serial.println("Offsets:");
+  Serial.print(ax_o); Serial.print("\t");
+  Serial.print(ay_o); Serial.print("\t");
+  Serial.print(az_o); Serial.print("\t");
+  Serial.print(gx_o); Serial.print("\t");
+  Serial.print(gy_o); Serial.print("\t");
+  Serial.print(gz_o); Serial.print("\t");
+  Serial.println("\nPress any key to start calibration");
+  // Waiting loop for char.
+  while (true){if (Serial.available()) break;}
+  Serial.println("Calibration started, do not move the sensor!");
+}
+
+/**
+    MPU6050 calibration function.
+    Read and print the offset values from all axis and applies low pass filtering
+    to set the desired output value.
+*/
+void gyroCalibrationLoop() {
+  // Get accelerometer and gyroscope raw data.
+  getAcceleration(&ax, &ay, &az);
+  getRotation(&gx, &gy, &gz);
+
+  // Filtering using low pass filter.
+  f_ax = f_ax-(f_ax>>5)+ax;
+  p_ax = f_ax>>5;
+
+  f_ay = f_ay-(f_ay>>5)+ay;
+  p_ay = f_ay>>5;
+
+  f_az = f_az-(f_az>>5)+az;
+  p_az = f_az>>5;
+
+  f_gx = f_gx-(f_gx>>3)+gx;
+  p_gx = f_gx>>3;
+
+  f_gy = f_gy-(f_gy>>3)+gy;
+  p_gy = f_gy>>3;
+
+  f_gz = f_gz-(f_gz>>3)+gz;
+  p_gz = f_gz>>3;
+
+  // Every 100 readings, correct the offset
+  if (counter==100){
+    // Print readings like a table.
+    Serial.print("promedio:"); Serial.print("\t");
+    Serial.print(p_ax); Serial.print("\t");
+    Serial.print(p_ay); Serial.print("\t");
+    Serial.print(p_az); Serial.print("\t");
+    Serial.print(p_gx); Serial.print("\t");
+    Serial.print(p_gy); Serial.print("\t");
+    Serial.println(p_gz);
+
+    // Calibrate the accelerometer to 1g on the z axis (adjust the offset)
+    if (p_ax>0) ax_o--;
+    else {ax_o++;}
+    if (p_ay>0) ay_o--;
+    else {ay_o++;}
+    if (p_az-16384>0) az_o--;
+    else {az_o++;}
+
+    i2cData[0] = ax_o;
+    i2cData[1] = ay_o; 
+    i2cData[2] = az_o; 
+    while (i2cWrite(MPU6050_RA_XA_OFFS_H, i2cData, 3, false));
+
+    // Calibrate the gyro to 0º / s on all axes (adjust the offset)
+    if (p_gx>0) gx_o--;
+    else {gx_o++;}
+    if (p_gy>0) gy_o--;
+    else {gy_o++;}
+    if (p_gz>0) gz_o--;
+    else {gz_o++;}
+
+    i2cData[0] = gx_o;
+    i2cData[1] = gy_o; 
+    i2cData[2] = gz_o;
+    while (i2cWrite(MPU6050_RA_XG_OFFS_USRH, i2cData, 3, false));
+
+    counter=0;
+  }
+  counter++;
+}
 
 void setup() {
   Serial.begin(115200);
