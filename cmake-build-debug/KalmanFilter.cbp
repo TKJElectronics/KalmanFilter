@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="KalmanFilter"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="KalmanFilter">
+				<Option output="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/KalmanFilter.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Prannaya/CLionProjects/KalmanFilter/."/>
+					<Add directory="C:/Users/Prannaya/CLionProjects/KalmanFilter/examples"/>
+					<Add directory="C:/Users/Prannaya/CLionProjects/KalmanFilter/examples/MPU6050"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include/c++"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include-fixed"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 KalmanFilter"/>
+					<CompileFile command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="KalmanFilter/fast">
+				<Option output="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/KalmanFilter.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Prannaya/CLionProjects/KalmanFilter/."/>
+					<Add directory="C:/Users/Prannaya/CLionProjects/KalmanFilter/examples"/>
+					<Add directory="C:/Users/Prannaya/CLionProjects/KalmanFilter/examples/MPU6050"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include/c++"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/include-fixed"/>
+					<Add directory="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/../lib/gcc/i686-w64-mingw32/6.3.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 KalmanFilter/fast"/>
+					<CompileFile command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/Prannaya/nim-1.0.6/dist/mingw32/bin/mingw32-make.exe -f &quot;C:/Users/Prannaya/CLionProjects/KalmanFilter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Prannaya/CLionProjects/KalmanFilter/Kalman.cpp">
+			<Option target="KalmanFilter"/>
+		</Unit>
+		<Unit filename="C:/Users/Prannaya/CLionProjects/KalmanFilter/Kalman.h">
+			<Option target="KalmanFilter"/>
+		</Unit>
+		<Unit filename="C:/Users/Prannaya/CLionProjects/KalmanFilter/examples/MPU6050/I2C.ino">
+			<Option target="KalmanFilter"/>
+		</Unit>
+		<Unit filename="C:/Users/Prannaya/CLionProjects/KalmanFilter/examples/MPU6050/MPU6050.ino">
+			<Option target="KalmanFilter"/>
+		</Unit>
+		<Unit filename="C:/Users/Prannaya/CLionProjects/KalmanFilter/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
