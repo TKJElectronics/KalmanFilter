@@ -56,7 +56,7 @@ void setup() {
   while (i2cRead(0x75, i2cData, 1));
   if (i2cData[0] != 0x68) { // Read "WHO_AM_I" register
     Serial.print(F("Error reading sensor"));
-    while (1);
+    while (true);
   }
 
   delay(100); // Wait for sensor to stabilize
@@ -97,7 +97,7 @@ void loop() {
   tempRaw = (int16_t)((i2cData[6] << 8) | i2cData[7]);
   gyroX = (int16_t)((i2cData[8] << 8) | i2cData[9]);
   gyroY = (int16_t)((i2cData[10] << 8) | i2cData[11]);
-  gyroZ = (int16_t)((i2cData[12] << 8) | i2cData[13]);;
+  gyroZ = (int16_t)((i2cData[12] << 8) | i2cData[13]);
 
   double dt = (double)(micros() - timer) / 1000000; // Calculate delta time
   timer = micros();
