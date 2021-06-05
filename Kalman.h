@@ -23,25 +23,25 @@ public:
     Kalman();
 
     // The angle should be in degrees and the rate should be in degrees per second and the delta time in seconds
-    float getAngle(float newAngle, float newRate, float dt);
+    auto getAngle(float newAngle, float newRate, float dt) -> float;
 
-    void setAngle(float angle); // Used to set angle, this should be set as the starting angle
-    float getRate(); // Return the unbiased rate
+    auto setAngle(float angle) -> void; // Used to set angle, this should be set as the starting angle
+    auto getRate() const -> float; // Return the unbiased rate
 
     /* These are used to tune the Kalman filter */
-    void setQangle(float Q_angle);
+    auto setQangle(float Q_angle) -> void;
     /**
      * setQbias(float Q_bias)
      * Default value (0.003f) is in Kalman.cpp. 
      * Raise this to follow input more closely,
      * lower this to smooth result of kalman filter.
      */
-    void setQbias(float Q_bias);
-    void setRmeasure(float R_measure);
+    auto setQbias(float Q_bias) -> void;
+    auto setRmeasure(float R_measure) -> void;
 
-    float getQangle();
-    float getQbias();
-    float getRmeasure();
+    auto getQangle() const -> float;
+    auto getQbias() const -> float;
+    auto getRmeasure() const -> float;
 
 private:
     /* Kalman filter variables */
