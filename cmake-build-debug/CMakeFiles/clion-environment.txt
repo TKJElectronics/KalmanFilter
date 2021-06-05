@@ -1,4 +1,0 @@
-ToolSet: w64 5.0 (local)@C:\Users\Prannaya\nim-1.0.6\dist\mingw32
-Options: 
-
-Options:

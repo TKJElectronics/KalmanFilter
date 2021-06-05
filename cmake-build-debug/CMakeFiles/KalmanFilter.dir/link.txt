@@ -1,3 +1,0 @@
-C:\Users\Prannaya\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7442.42\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\KalmanFilter.dir/objects.a
-C:\Users\Prannaya\nim-1.0.6\dist\mingw32\bin\ar.exe cr CMakeFiles\KalmanFilter.dir/objects.a @CMakeFiles\KalmanFilter.dir\objects1.rsp
-C:\Users\Prannaya\nim-1.0.6\dist\mingw32\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\KalmanFilter.dir/objects.a -Wl,--no-whole-archive -o KalmanFilter.exe -Wl,--out-implib,libKalmanFilter.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\KalmanFilter.dir\linklibs.rsp
